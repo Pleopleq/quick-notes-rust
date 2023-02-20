@@ -1,14 +1,12 @@
-// use std::fs::{DirBuilder};
-use std::env::current_dir;
-use std::path::PathBuf;
+use std::fs::create_dir;
+use std::path::Path;
 
-fn get_current_dir() -> PathBuf {
-    let path = current_dir();
-    return path.unwrap();
-}
+fn main() {
+    let notes_folder_path = Path::new("./notes");
 
-fn main()   {
-    let path = get_current_dir();
-    let notes_path = path.display();
-    println!("{}", notes_path)
+    if !notes_folder_path.exists() {
+       create_dir("notes").unwrap();
+    }
+    
+    println!("folder is already created");
 }
